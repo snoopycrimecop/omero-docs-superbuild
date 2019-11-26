@@ -3,3 +3,7 @@ base-branch: master
 submodules:
   ome-documentation:
     base-branch: develop
+  omero-install:
+    base-branch: develop
+  omeroweb-install:
+    base-branch: master
