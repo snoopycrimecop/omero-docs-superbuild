@@ -22,6 +22,13 @@ pipeline {
         stage('Build') {
             steps {
                 sh """
+                    rm -rf OMERO.server*
+                """
+                copyArtifacts(projectName: 'OMERO-build', flatten: true, filter: '**/OMERO.server*zip')
+                sh """
+                    unzip OMERO.server*zip
+                    rm -rf OMERO.server*.zip
+                    ln -s OMERO.server* OMERO.server
                     cd ${env.WORKSPACE}/ome-documentation
                     ./autogen_omero.sh
                 """
