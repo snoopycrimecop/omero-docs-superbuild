@@ -16,32 +16,14 @@ pipeline {
     stages {
         stage('Versions') {
             steps {
-
-                // Currently disabled. Eventually, this should copy the blitz python zip
-                copyArtifacts(projectName: 'OMERO-build-build', flatten: true, filter: 'version.properties')
-
-                // build is in .gitignore so we can use it as a temp dir
-                sh """
-                    mkdir ${env.WORKSPACE}/build
-                    cd ${env.WORKSPACE}/build && curl -sfL https://github.com/ome/build-infra/archive/master.tar.gz | tar -zxf -
-                    export PATH=$PATH:${env.WORKSPACE}/build/build-infra-master/
-                    cd ..
-                    # Workaround for "unflattened" file, possibly due to matrix
-                    find . -name version.properties -exec cp {} . \\;
-
-                    test -e version.properties
-                    # First download of omero-blitz happens here
-                    export VERSION_PROPERTIES=${env.WORKSPACE}/version.properties
-                    foreach-get-version-as-property >> version.properties
-                """
-                archiveArtifacts artifacts: 'version.properties'
+                sh 'echo Disable versions copy until needed'
             }
         }
         stage('Build') {
             steps {
                 sh """
-                    export VERSION_PROPERTIES=${env.WORKSPACE}/version.properties
-                    git submodule foreach python setup.py sdist
+                    cd ${env.WORKSPACE}/ome-documentation
+                    ./autogen_omero.sh
                 """
                 archiveArtifacts artifacts: '*/dist/*tar.gz'
             }
