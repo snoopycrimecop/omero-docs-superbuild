@@ -1,0 +1,9 @@
+[submodule "ome-documentation"]
+	path = ome-documentation
+	url = git://github.com/ome/ome-documentation
+[submodule "omero-install"]
+	path = omero-install
+	url = git://github.com/ome/omero-install
+[submodule "omeroweb-install"]
+	path = omeroweb-install
+	url = git://github.com/ome/omeroweb-install
