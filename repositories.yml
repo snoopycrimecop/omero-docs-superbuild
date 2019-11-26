@@ -1,0 +1,5 @@
+base-branch: master
+
+submodules:
+  ome-documentation:
+    base-branch: develop
