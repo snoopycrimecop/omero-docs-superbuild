@@ -32,7 +32,7 @@ pipeline {
                     cd ${env.WORKSPACE}/ome-documentation
                     ./autogen_omero.sh
                 """
-                archiveArtifacts artifacts: '*/dist/*tar.gz'
+                archiveArtifacts artifacts: '*/omero/_build/OMERO.doc*zip*'
             }
         }
         stage('Deploy') {
