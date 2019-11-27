@@ -26,6 +26,11 @@ pipeline {
                 """
                 copyArtifacts(projectName: 'OMERO-build', flatten: true, filter: '**/OMERO.server*zip')
                 sh """
+                    # Attempt to fix utf-8 failures
+                    export LANG='en_US.UTF-8'
+                    export LANGUAGE='en_US:en'
+                    export LC_ALL='en_US.UTF-8'
+
                     unzip OMERO.server*zip
                     rm -rf OMERO.server*.zip
                     ln -s OMERO.server* OMERO.server
