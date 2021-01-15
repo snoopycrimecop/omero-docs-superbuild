@@ -1,12 +1,12 @@
 [submodule "ome-documentation"]
 	path = ome-documentation
-	url = git://github.com/ome/ome-documentation
+	url = git://github.com/snoopycrimecop/ome-documentation
 	branch = develop
 [submodule "omero-install"]
 	path = omero-install
-	url = git://github.com/ome/omero-install
+	url = git://github.com/snoopycrimecop/omero-install
 	branch = develop
 [submodule "omeroweb-install"]
 	path = omeroweb-install
-	url = git://github.com/ome/omeroweb-install
+	url = git://github.com/snoopycrimecop/omeroweb-install
 	branch = master
